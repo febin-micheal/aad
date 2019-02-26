@@ -32,9 +32,14 @@ void main()
 	double m;
 	clock_t t1,t2;
 
+	FILE *fp;
+	fp=fopen("bubbleSort.dat", "a");
+
+
 	int i,j,x,ch,a[N],n;
 	printf("enter no. of terms: ");
 	scanf("%d",&n);
+	
 	do
 	{
 		printf("1.average\n2.best\n3.worst\nenter your choice: ");
@@ -75,10 +80,18 @@ void main()
 		m=(double)(t2-t1)/CLOCKS_PER_SEC;
 		printf("\ntime taken: %f",m);
 
+		if(ch==1)
+		{
+			fprintf(fp,"%d ",n);
+			fprintf(fp,"%f\n",m);
+
+		}
+
 		printf("\ndo you like to continue (1/0)?: ");
 		scanf("%d",&x);
 	}
 	while(x==1);
+	fclose(fp);
 }
 
 	
